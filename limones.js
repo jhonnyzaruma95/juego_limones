@@ -4,6 +4,7 @@ let ctx=canvas.getContext("2d");
 const Altura_Suelo=40;
 const Altura_Personaje=60;
 const Ancho_Personaje=40;
+let personajeX=canvas.width/2;
 
 function iniciar(){
     dibujarSuelo();
@@ -17,6 +18,21 @@ function dibujarSuelo(){
 
 function dibujarPersonaje(){
     ctx.fillStyle="yellow";
-    ctx.fillRect(canvas.width/2,canvas.height-(Altura_Suelo+Altura_Personaje),Ancho_Personaje,Altura_Personaje);
+    ctx.fillRect(personajeX,canvas.height-(Altura_Suelo+Altura_Personaje),Ancho_Personaje,Altura_Personaje);
     
+}
+
+function moverIzquierda(){
+    personajeX=personajeX-10;
+    actualizarPantalla();
+    
+}
+function actualizarPantalla(){
+    limpiarCanva();
+    dibujarSuelo();
+    dibujarPersonaje();
+
+}
+function limpiarCanva(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 }
