@@ -13,7 +13,8 @@ let limonX=canvas.width/2;
 let limonY=0;
 let puntaje=0;
 let vidas=3;
-let velocidadCaida=100;
+let velocidadCaida=200;
+let intervalo;
 
 function iniciar(){
     setInterval(bajarLimon,velocidadCaida);//primerParametro: funcion segundoParametro: tiempoen milesegunos
@@ -77,7 +78,31 @@ function detectarAtrapado(){
         mostrarEnSpan("txtPuntaje",puntaje);
 
     }
+    if(puntaje==3){
+        velocidadCaida=150;
+        actualizarVelocidad();
+    }
+    else if(puntaje==6){
+            velocidadCaida=100;
+            actualizarVelocidad();
+    }
+    else if(puntaje==10){
+            alert("!!ERES EL GANADOR!!-- TIENES LOS LIMONES--FELICIDADES");
+            clearInterval(intervalo);
+
+    }
 }
+
+function actualizarVelocidad(){
+    clearInterval(intervalo);
+    intervalo=setInterval(bajarLimon,velocidadCaida);
+
+}
+
+function iniciarJuego(){
+    intervalo=setInterval(bajarLimon,velocidadCaida);
+}
+
 
 function detectarPiso(){
     if(limonY+ALTURA_LIMON==canvas.height-ALTURA_SUELO){
