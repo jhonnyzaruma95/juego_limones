@@ -1,59 +1,315 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caza Estrellas</title>
-  <link rel="stylesheet" href="limones.css"/>
-  <script src="utils.js"></script>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Atrapar Limones - Anime Edition</title>
+
+    <link rel="stylesheet" href="limones.css">
+
+    <script src="utils.js"></script>
 </head>
+
+
 <body onload="iniciar()">
-  <main class="contenedor">
-    <section class="cabecera">
-      <div class="insignia">🍋</div>
-      <div>
-        <span class="etiqueta">JUEGO ARCADE</span>
-        <h1>Atrapar Limones</h1>
-        <p class="subtitulo">Si del cielo te caen limones... ¡atrápalos todos!</p>
-        <h2>Autor: Jhonny Zaruma</h2>
-      </div>
-    </section>
 
-    <section class="marcadores" aria-label="Marcadores del juego">
-      <div class="marcador">
-        <span class="marcador-icono">🏆</span>
-        <div>
-          <span class="marcador-label">PUNTAJE</span>
-          <strong id="txtPuntaje">0</strong>
-        </div>
-      </div>
-      <div class="marcador">
-        <span class="marcador-icono">❤️</span>
-        <div>
-          <span class="marcador-label">VIDAS</span>
-          <strong id="txtVidas">3</strong>
-        </div>
-      </div>
-    </section>
+    <div class="anime-background">
 
-    <section class="zona-juego">
-      <div class="estado">● LISTO PARA JUGAR</div>
-      <canvas id="areaJuego" width="600" height="400"></canvas>
-    </section>
+        <div class="energy energy-1"></div>
+        <div class="energy energy-2"></div>
+        <div class="energy energy-3"></div>
 
-    <div class="panel">
-      <p><span class="panel-dot"></span> Usa los controles para mover tu cesta</p>
     </div>
 
-    <div class="botones" aria-label="Controles del juego">
-      <button type="button" onclick="moverIzquierda()"><span>←</span> Izquierda</button>
-      <button type="button" onclick="moverDerecha()">Derecha <span>→</span></button>
-      <button id="Reiniciar" type="button" onclick="reiniciar()"><span>↻</span> Reiniciar</button>
-    </div>
 
-    <footer>ATRAPA • SUMA • DIVIÉRTETE</footer>
-  </main>
+    <main class="contenedor">
 
-  <script src="limones.js"></script>
+
+        <!-- =========================
+             ENCABEZADO
+        ========================== -->
+
+        <header class="encabezado">
+
+            <div class="logo-anime">
+
+                <div class="logo-icono">
+                    🍋
+                </div>
+
+                <div class="logo-texto">
+
+                    <span class="mini-titulo">
+                        ✦ LEMON ADVENTURE ✦
+                    </span>
+
+                    <h1>
+                        ATRAPAR
+                        <span>LIMONES</span>
+                    </h1>
+
+                    <p class="subtitulo">
+                        Si del cielo te caen limones...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="autor">
+
+                <span>★</span>
+
+                Autor:
+                <strong>Jhonny Zaruma</strong>
+
+                <span>★</span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             HUD
+        ========================== -->
+
+        <section class="hud">
+
+
+            <!-- PUNTAJE -->
+
+            <div class="hud-card score-card">
+
+                <div class="hud-icon">
+                    ⭐
+                </div>
+
+                <div class="hud-info">
+
+                    <span class="hud-title">
+                        PUNTAJE
+                    </span>
+
+                    <strong id="txtPuntaje">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ESTADO -->
+
+            <div class="hud-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    ¡ATRAPA LOS LIMONES!
+                </span>
+
+            </div>
+
+
+
+            <!-- VIDAS -->
+
+            <div class="hud-card lives-card">
+
+                <div class="hud-info">
+
+                    <span class="hud-title">
+                        VIDAS
+                    </span>
+
+                    <strong id="txtVidas">
+                        3
+                    </strong>
+
+                </div>
+
+                <div class="hud-icon heart">
+                    ❤️
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             JUEGO
+        ========================== -->
+
+        <section class="juego-container">
+
+
+            <div class="game-header">
+
+                <span>
+                    ⚡ MODO AVENTURA ⚡
+                </span>
+
+                <span>
+                    STAGE 01
+                </span>
+
+            </div>
+
+
+            <div class="game-frame">
+
+                <div class="corner corner-tl"></div>
+                <div class="corner corner-tr"></div>
+                <div class="corner corner-bl"></div>
+                <div class="corner corner-br"></div>
+
+
+                <div class="canvas-container">
+
+                    <canvas
+                        id="areaJuego"
+                        width="600"
+                        height="400">
+                    </canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="game-tip">
+
+                <span class="tip-icon">
+                    ✦
+                </span>
+
+                Atrapa los limones antes de que lleguen al suelo
+
+                <span class="tip-icon">
+                    ✦
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTROLES
+        ========================== -->
+
+        <section class="controles">
+
+
+            <button
+                type="button"
+                class="anime-button left-button"
+                onclick="moverIzquierda()">
+
+                <span class="button-icon">
+                    ◀
+                </span>
+
+                <span>
+                    IZQUIERDA
+                </span>
+
+            </button>
+
+
+
+            <button
+                id="Reiniciar"
+                type="button"
+                class="anime-button restart-button"
+                onclick="reiniciar()">
+
+                <span class="button-icon">
+                    ↻
+                </span>
+
+                <span>
+                    REINICIAR
+                </span>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="anime-button right-button"
+                onclick="moverDerecha()">
+
+                <span>
+                    DERECHA
+                </span>
+
+                <span class="button-icon">
+                    ▶
+                </span>
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             FRASE
+        ========================== -->
+
+        <div class="frase-final">
+
+            <span>🍋</span>
+
+            <p>
+                ¡Demuestra tu habilidad y consigue
+                el récord!
+            </p>
+
+            <span>🍋</span>
+
+        </div>
+
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer>
+
+            <div class="footer-line"></div>
+
+            <span>
+                ✦ ATRAPA ✦ SUMA ✦ SUPERA TU RÉCORD ✦
+            </span>
+
+            <div class="footer-line"></div>
+
+        </footer>
+
+
+    </main>
+
+
+    <script src="limones.js"></script>
+
 </body>
+
 </html>
