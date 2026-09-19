@@ -1,26 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Caza Estrellas</title>
   <link rel="stylesheet" href="limones.css"/>
   <script src="utils.js"></script>
 </head>
 <body onload="iniciar()">
-  <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    <h2>Autor: Jhonny Zaruma</h2>
-    <canvas id="areaJuego" width="600" height="400"></canvas>
+  <main class="contenedor">
+    <section class="cabecera">
+      <div class="insignia">🍋</div>
+      <div>
+        <span class="etiqueta">JUEGO ARCADE</span>
+        <h1>Atrapar Limones</h1>
+        <p class="subtitulo">Si del cielo te caen limones... ¡atrápalos todos!</p>
+        <h2>Autor: Jhonny Zaruma</h2>
+      </div>
+    </section>
+
+    <section class="marcadores" aria-label="Marcadores del juego">
+      <div class="marcador">
+        <span class="marcador-icono">🏆</span>
+        <div>
+          <span class="marcador-label">PUNTAJE</span>
+          <strong id="txtPuntaje">0</strong>
+        </div>
+      </div>
+      <div class="marcador">
+        <span class="marcador-icono">❤️</span>
+        <div>
+          <span class="marcador-label">VIDAS</span>
+          <strong id="txtVidas">3</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="zona-juego">
+      <div class="estado">● LISTO PARA JUGAR</div>
+      <canvas id="areaJuego" width="600" height="400"></canvas>
+    </section>
+
     <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
+      <p><span class="panel-dot"></span> Usa los controles para mover tu cesta</p>
     </div>
-    <div class="botones">
-      <button onclick="moverIzquierda()">Izquierda</button>
-      <button onclick="moverDerecha()">Derecha</button>
-      <button id="Reiniciar" onclick="reiniciar()">Reiniciar</button>
+
+    <div class="botones" aria-label="Controles del juego">
+      <button type="button" onclick="moverIzquierda()"><span>←</span> Izquierda</button>
+      <button type="button" onclick="moverDerecha()">Derecha <span>→</span></button>
+      <button id="Reiniciar" type="button" onclick="reiniciar()"><span>↻</span> Reiniciar</button>
     </div>
-  </div>
+
+    <footer>ATRAPA • SUMA • DIVIÉRTETE</footer>
+  </main>
+
   <script src="limones.js"></script>
 </body>
 </html>
